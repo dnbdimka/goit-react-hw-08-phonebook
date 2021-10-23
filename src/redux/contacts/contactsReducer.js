@@ -11,19 +11,23 @@ import {
   removeContactByIdSucces,
   removeContactByIdRequest,
   removeContactByIdError,
+  resetContactsSucces,
 } from "./contactsActions";
+
+// [getContactsRequest]: (state, action) => null,
 
 const contactsListReducer = createReducer([], {
   [getContactsSucces]: (_, action) => action.payload,
-  [addNewContactSucces]: (state, { payload }) => {
-    return [...state, payload];
-  },
+  [addNewContactSucces]: (state, { payload }) => [...state, payload],
   [removeContactByIdSucces]: (state, { payload }) =>
     state.filter((contact) => contact.id !== payload),
+
+  [resetContactsSucces]: (_, action) => action.payload,
 });
 
 const contactsFilterReducer = createReducer("", {
   [filteredContacts]: (_, { payload }) => payload,
+  [resetContactsSucces]: () => "",
 });
 
 const contactsLoaderReducer = createReducer(false, {
@@ -42,6 +46,10 @@ const contactsErrorReducer = createReducer("", {
   [getContactsError]: (_, action) => action.payload,
   [addNewContactError]: (_, action) => action.payload,
   [removeContactByIdError]: (_, action) => action.payload,
+  [getContactsSucces]: () => "",
+  [addNewContactSucces]: () => "",
+  [removeContactByIdSucces]: () => "",
+  [resetContactsSucces]: () => "",
 });
 
 export const contactsReducer = combineReducers({

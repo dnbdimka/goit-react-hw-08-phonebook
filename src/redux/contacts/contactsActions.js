@@ -26,6 +26,8 @@ const filteredContacts = createAction("contacts/filteredContacts");
 const setLoader = createAction("contacts/setLoader");
 const setError = createAction("contacts/setError");
 
+const resetContactsSucces = createAction("contacts/resetContactsSucces");
+
 export {
   getContactsRequest,
   getContactsSucces,
@@ -39,4 +41,5 @@ export {
   filteredContacts,
   setLoader,
   setError,
+  resetContactsSucces,
 };

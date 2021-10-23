@@ -35,7 +35,7 @@ const addContactOperation = (newContact) => async (dispatch) => {
   dispatch(addNewContactRequest());
   try {
     const response = await axios.post(`${BASE_URL}/contacts`, newContact);
-    dispatch(addNewContactSucces({ ...newContact, id: response.data.name }));
+    dispatch(addNewContactSucces({ ...newContact, id: response.data.id }));
   } catch (error) {
     dispatch(addNewContactError(error.message));
   }

@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { loaderSelector } from "../redux/auth/authSelectors";
+import { useDispatch } from "react-redux";
 import Header from "./header/Header";
 import Main from "./main/Main";
 import { getCurrentUserOperation } from "../redux/auth/authOperation";

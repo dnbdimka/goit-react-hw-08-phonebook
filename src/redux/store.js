@@ -13,6 +13,7 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
+import reduxReset from "redux-reset";
 
 const authConfig = {
   key: "auth",
@@ -20,10 +21,18 @@ const authConfig = {
   whitelist: ["token"],
 };
 
-const rootReducer = combineReducers({
+const appReducer = combineReducers({
   contacts: contactsReducer,
   auth: persistReducer(authConfig, authReducer),
 });
+
+const rootReducer = (state, action) => {
+  // if (action.type === "auth/signOutSuccess") {
+  //   state.contacts.items = [];
+  // }
+
+  return appReducer(state, action);
+};
 
 const store = configureStore({
   reducer: rootReducer,
