@@ -1,10 +1,5 @@
 import axios from "axios";
 import {
-  getContactsRequest,
-  resetContacts,
-  resetContactsSucces,
-} from "../contacts/contactsActions";
-import {
   getCurrentUserError,
   getCurrentUserRequest,
   getCurrentUserSuccess,
@@ -60,7 +55,6 @@ const signOutOperation = () => async (dispatch, getState) => {
     await axios.post(`${BASE_URL}/users/logout`);
     token.unset();
     dispatch(signOutSuccess());
-    dispatch(resetContactsSucces([]));
   } catch (error) {
     dispatch(signOutError(error.message));
   }

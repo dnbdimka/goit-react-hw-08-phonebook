@@ -13,7 +13,6 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-import reduxReset from "redux-reset";
 
 const authConfig = {
   key: "auth",

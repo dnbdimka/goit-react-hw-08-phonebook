@@ -11,8 +11,8 @@ import {
   removeContactByIdSucces,
   removeContactByIdRequest,
   removeContactByIdError,
-  resetContactsSucces,
 } from "./contactsActions";
+import { signOutSuccess } from "../auth/authActions";
 
 // [getContactsRequest]: (state, action) => null,
 
@@ -22,12 +22,12 @@ const contactsListReducer = createReducer([], {
   [removeContactByIdSucces]: (state, { payload }) =>
     state.filter((contact) => contact.id !== payload),
 
-  [resetContactsSucces]: (_, action) => action.payload,
+  [signOutSuccess]: () => [],
 });
 
 const contactsFilterReducer = createReducer("", {
   [filteredContacts]: (_, { payload }) => payload,
-  [resetContactsSucces]: () => "",
+  [signOutSuccess]: () => "",
 });
 
 const contactsLoaderReducer = createReducer(false, {
@@ -49,7 +49,7 @@ const contactsErrorReducer = createReducer("", {
   [getContactsSucces]: () => "",
   [addNewContactSucces]: () => "",
   [removeContactByIdSucces]: () => "",
-  [resetContactsSucces]: () => "",
+  [signOutSuccess]: () => "",
 });
 
 export const contactsReducer = combineReducers({
